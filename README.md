@@ -38,6 +38,7 @@ Before explaining how the simulation is built, a few assumptions are made in the
 - The part where the ball is kicked is modelled as a point
 - Spin axis remains constant during the flight
 - No contact or deformation during the flight
+
 Whatsmore, the simulation terminates when the ball reaches the ground or goes out of bounds to minimise randomness during the simulation such as reaction of goal keeper or players.
 #
 This simulation includes all possible forces during a free kick such as gravity, air drag and magnus force. The magnus effect comes from the varible kick_pt, which is an offset vector from the ball’s center to the point of contact. v0_vec is the initial velocity vector (direction you’re kicking in). The cross product gives you the spin axis (omega), which shows the direction and magnitude of rotation. This rotation causes a difference in air flow on both sides. Benoulli's principal shows that there would be a pressure difference due to the varying flow speed, inducing a magnus force. The other forces are determined by relevant equations. In each time step, these forces are calculated depending on the current posisiton of the ball and the net force is found by newton's second law. The acceleration value is yielded and RK4 integration method is carried out to determine the position and velocity for hte next time step. The loop breaks when the ball goes out of bounds or touches the ground. Finally, the data points are saved and ploted with animation to show the simulation results. 
